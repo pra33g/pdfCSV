@@ -23,6 +23,7 @@ Partial Class Main
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LocateJavaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -55,19 +56,19 @@ Partial Class Main
         '
         Me.LocateJavaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AutomaticallyToolStripMenuItem, Me.ManuallyToolStripMenuItem})
         Me.LocateJavaToolStripMenuItem.Name = "LocateJavaToolStripMenuItem"
-        Me.LocateJavaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.LocateJavaToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
         Me.LocateJavaToolStripMenuItem.Text = "Locate Java"
         '
         'AutomaticallyToolStripMenuItem
         '
         Me.AutomaticallyToolStripMenuItem.Name = "AutomaticallyToolStripMenuItem"
-        Me.AutomaticallyToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AutomaticallyToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.AutomaticallyToolStripMenuItem.Text = "Automatically"
         '
         'ManuallyToolStripMenuItem
         '
         Me.ManuallyToolStripMenuItem.Name = "ManuallyToolStripMenuItem"
-        Me.ManuallyToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ManuallyToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.ManuallyToolStripMenuItem.Text = "Manually"
         '
         'AboutToolStripMenuItem
@@ -87,9 +88,9 @@ Partial Class Main
         Me.Label1.Font = New System.Drawing.Font("Cascadia Code", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(119, 40)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(132, 28)
+        Me.Label1.Size = New System.Drawing.Size(120, 28)
         Me.Label1.TabIndex = 5
-        Me.Label1.Text = "PDF to CSV"
+        Me.Label1.Text = "PDF 2 CSV"
         '
         'Panel1
         '
@@ -108,11 +109,12 @@ Partial Class Main
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Main"
-        Me.Text = "MSI - PDFtoCSV"
+        Me.Text = "MSI - PDF2CSV"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)

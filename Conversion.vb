@@ -18,7 +18,6 @@
         p.StartInfo.FileName = Main.javaPath
         'p.StartInfo.FileName = "java"
         p.StartInfo.Arguments = "-jar " + " pdf_to_csv.jar " + " """ + Convert.inputFile + """ " + " """ + Convert.outputFile + """ " + CStr(Convert.inst_code)
-        'p.StartInfo.Arguments = "-jar " + " pdf_to_csv.jar " + " """ + "res.pdf" + """ " + " """ + "op.csv" + """ " + CStr(149)
         p.StartInfo.UseShellExecute = False
         p.StartInfo.RedirectStandardOutput = True
         p.StartInfo.RedirectStandardInput = True
@@ -57,20 +56,25 @@
         If userPressed = MsgBoxResult.Ok Then
             If pid <> -1 Then
                 Dim killProcess As System.Diagnostics.Process
-                killProcess = System.Diagnostics.Process.GetProcessById(pid)
-                killProcess.Kill()
+                Try
+                    killProcess = System.Diagnostics.Process.GetProcessById(pid)
+
+                    killProcess.Kill()
+                    home.Label1.Text = "Operation aborted."
+                Catch ex As Exception
+                    home.Label1.Text = "Thanks for using PDF2CSV :)"
+                End Try
                 Me.Hide()
 
 
                 home.Show()
                 Main.ControlBox = True
+                Application.Restart()
+
             End If
         Else
 
         End If
     End Sub
 
-    Private Sub Conversion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

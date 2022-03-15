@@ -33,10 +33,12 @@
         Dim lookForPath As String = ".\files\javapath.txt"
         If IO.File.Exists(lookForPath) Then
             Dim readPath As New IO.StreamReader(lookForPath)
-            defaultPath = readPath.ReadLine()
+            javaPath = readPath.ReadLine()
+        Else
+            javaPath = defaultPath
         End If
         'set java path to default path
-        javaPath = defaultPath
+
 
         If checkJava(javaPath) Then
             javaFound = True
@@ -66,6 +68,10 @@
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         Dim about As New About
         about.Show()
+
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
     End Sub
 End Class

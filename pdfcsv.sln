@@ -7,10 +7,13 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "pdfcsv", "pdfcsv.vbproj", "
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		All|Any CPU = All|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D7549BC-DABB-4B6F-A81D-285B42C72128}.All|Any CPU.ActiveCfg = Release|Any CPU
+		{0D7549BC-DABB-4B6F-A81D-285B42C72128}.All|Any CPU.Build.0 = Release|Any CPU
 		{0D7549BC-DABB-4B6F-A81D-285B42C72128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0D7549BC-DABB-4B6F-A81D-285B42C72128}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D7549BC-DABB-4B6F-A81D-285B42C72128}.Release|Any CPU.ActiveCfg = Release|Any CPU

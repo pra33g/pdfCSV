@@ -14,7 +14,7 @@
 
 
     Private Sub home_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Label1.Text = "Welcome to PDF2CSV!"
 
     End Sub
 

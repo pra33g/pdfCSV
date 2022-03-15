@@ -16,24 +16,34 @@
     Function findSetJava() As Boolean
         Dim search As String() = Nothing
         Try
-            search = IO.Directory.GetFiles("C:\Program Files\Java\", "*.*", IO.SearchOption.AllDirectories)
+            search = IO.Directory.GetFiles(Main.defaultPath, "*.*", IO.SearchOption.AllDirectories)
         Catch ex As Exception
-            MsgBox("Couldn't locate java.exe in default directory" + Main.defaultPath + " , try locating manually")
+            MsgBox("java.exe: " + Main.defaultPath + "...not found.", MsgBoxStyle.Critical)
         End Try
         Dim found As Boolean = False
         If (search IsNot Nothing) Then
             For Each file As String In search
                 If file Like "*java.exe" Then
                     MsgBox("Located java at " + file)
-                    My.Computer.FileSystem.CreateDirectory(".\files")
-                    Dim writePath As New IO.StreamWriter(".\files\javapath.txt")
-                    writePath.Write(file)
-                    writePath.WriteLine()
-                    writePath.Close()
+                    Try
+                        My.Computer.FileSystem.CreateDirectory(".\files")
+                        Dim writePath As New IO.StreamWriter(".\files\javapath.txt")
+                        writePath.Write(file)
+                        writePath.WriteLine()
+                        writePath.Close()
 
-                    Main.javaPath = file
-                    Main.javaFound = True
-                    home.Label1.Visible = True
+                        Main.javaPath = file
+                        Main.javaFound = True
+                        home.Label1.Visible = True
+                    Catch ex As IO.IOException
+                        MsgBox("Already set!", MsgBoxStyle.Exclamation)
+                    Catch ex As UnauthorizedAccessException
+
+                        MsgBox("Please run as admin!", MsgBoxStyle.Exclamation)
+                    Catch ex As Exception
+                        MsgBox("Exception!", MsgBoxStyle.Exclamation)
+
+                    End Try
 
                 End If
             Next
@@ -67,19 +77,21 @@
         If fd.ShowDialog() = DialogResult.OK Then
             Main.javaPath = fd.FileName
             Main.javaFound = True
-            My.Computer.FileSystem.CreateDirectory(".\files")
-            Dim create As IO.FileStream = IO.File.Create(".\files\javapath.txt")
-            create.Close()
+            Try
+                My.Computer.FileSystem.CreateDirectory(".\files")
+                Dim create As IO.FileStream = IO.File.Create(".\files\javapath.txt")
+                create.Close()
 
-            Dim writePath As New IO.StreamWriter(".\files\javapath.txt")
-            writePath.Write(fd.FileName)
-            writePath.WriteLine()
-            writePath.Close()
+                Dim writePath As New IO.StreamWriter(".\files\javapath.txt")
+                writePath.Write(fd.FileName)
+                writePath.WriteLine()
+                writePath.Close()
+
+            Catch ex As Exception
+                MsgBox("Please run as admin!", MsgBoxStyle.Exclamation)
+            End Try
         End If
         home.Label1.Visible = True
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
-    End Sub
 End Class
