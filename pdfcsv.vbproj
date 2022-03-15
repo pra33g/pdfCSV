@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.Designer.vb">
+      <DependentUpon>About.vb</DependentUpon>
+    </Compile>
+    <Compile Include="About.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Conversion.Designer.vb">
       <DependentUpon>Conversion.vb</DependentUpon>
     </Compile>
@@ -83,6 +89,12 @@
       <DependentUpon>Convert.vb</DependentUpon>
     </Compile>
     <Compile Include="Convert.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="home.Designer.vb">
+      <DependentUpon>home.vb</DependentUpon>
+    </Compile>
+    <Compile Include="home.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.vb">
@@ -116,11 +128,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Conversion.resx">
       <DependentUpon>Conversion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Convert.resx">
       <DependentUpon>Convert.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="home.resx">
+      <DependentUpon>home.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>

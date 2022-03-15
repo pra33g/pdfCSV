@@ -2,10 +2,33 @@
     Public inputFile As String = Nothing
     Public outputFile As String = Nothing
     Public inst_code As Integer = -1
+
+
+
     Sub refreshUD(e As EventArgs)
         Me.Controls.Clear() 'removes all the controls on the form
         InitializeComponent() 'load all the controls again
         Convert_Load(e, e) 'Load everything in your form, load event again
+        If inputFile IsNot Nothing Then
+            Me.Button1.ForeColor = Color.DarkGreen
+        End If
+
+        If outputFile IsNot Nothing Then
+            Me.Button2.ForeColor = Color.DarkGreen
+        End If
+
+        If inst_code <> -1 Then
+            Me.Button3.ForeColor = Color.DarkGreen
+        End If
+
+        If inputFile IsNot Nothing And outputFile IsNot Nothing And inst_code <> -1 Then
+            Me.Button4.Enabled = True
+            Me.Button4.ForeColor = Color.DarkBlue
+        Else
+            Me.Button4.Enabled = False
+            Me.Button4.ForeColor = Color.Gray
+        End If
+
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim fd As OpenFileDialog = New OpenFileDialog()
@@ -40,20 +63,21 @@
 
     Private Sub Convert_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If inputFile IsNot Nothing Then
-            Label1.Text = inputFile
-        Else
-            Label1.Text = "Not set!"
-        End If
-        If outputFile IsNot Nothing Then
-            Label2.Text = outputFile
-        Else
-            Label2.Text = "Not set!"
-        End If
-        If inst_code <> -1 Then
-            Label3.Text = inst_code
+            ToolTip1.SetToolTip(Me.Button1, inputFile)
 
         Else
-            Label3.Text = "Not set!"
+            ToolTip1.SetToolTip(Me.Button1, "Not set!")
+        End If
+        If outputFile IsNot Nothing Then
+            ToolTip2.SetToolTip(Me.Button2, outputFile)
+        Else
+            ToolTip2.SetToolTip(Me.Button2, "Not set!")
+        End If
+        If inst_code <> -1 Then
+            ToolTip3.SetToolTip(Me.Button3, inst_code)
+
+        Else
+            ToolTip3.SetToolTip(Me.Button3, "Not set!")
         End If
     End Sub
 
@@ -73,8 +97,16 @@
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim c As New Conversion
-        c.Show()
+
+        If inputFile IsNot Nothing And outputFile IsNot Nothing And inst_code <> -1 Then
+            Conversion.TopLevel = False
+            Main.Panel1.Controls.Add(Conversion)
+            Me.Hide()
+            Conversion.Show()
+        Else
+            MsgBox("Must set input file, output file and code!", MsgBoxStyle.Critical)
+        End If
 
     End Sub
+
 End Class

@@ -1,5 +1,5 @@
 ﻿Public Class Main
-    Dim javaFound As Boolean = False
+    Public javaFound As Boolean = False
     Public javaPath As String = Nothing
     Public defaultPath As String = "C:\Program Files\Java\"
 
@@ -7,15 +7,19 @@
         Me.Controls.Clear() 'removes all the controls on the form
         InitializeComponent() 'load all the controls again
         main_Load(e, e) 'Load everything in your form, load event again
-    End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        refreshUD(e)
-        Settings.TopLevel = False
-        Me.Panel1.Controls.Add(Settings)
-        Settings.Show()
-    End Sub
 
+    End Sub
+    Sub New()
 
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        home.TopLevel = False
+        Convert.TopLevel = False
+        Me.Panel1.Controls.Add(home)
+        Me.Panel1.Controls.Add(Convert)
+    End Sub
 
     Function checkJava(path As String) As Boolean
         If IO.File.Exists(javaPath) Then
@@ -39,17 +43,29 @@
         Else
             javaFound = False
         End If
+
+        home.Show()
+
+
+
+
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        refreshUD(e)
-        If javaFound Then
-            Convert.TopLevel = False
-            Panel1.Controls.Add(Convert)
-            Convert.Show()
+    Private Sub AutomaticallyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutomaticallyToolStripMenuItem.Click
+        Settings.findSetJava()
+        home.refreshUD(e)
+    End Sub
 
-        Else
-            MsgBox("Please set java path in settings!")
-        End If
+    Private Sub ManuallyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManuallyToolStripMenuItem.Click
+        Settings.manualLocateJava()
+        home.refreshUD(e)
+
+
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        Dim about As New About
+        about.Show()
+
     End Sub
 End Class

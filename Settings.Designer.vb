@@ -29,7 +29,7 @@ Partial Class Settings
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(42, 60)
+        Me.Button1.Location = New System.Drawing.Point(12, 12)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(125, 23)
         Me.Button1.TabIndex = 0
@@ -39,7 +39,7 @@ Partial Class Settings
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(45, 153)
+        Me.Label1.Location = New System.Drawing.Point(12, 77)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(82, 13)
         Me.Label1.TabIndex = 1
@@ -47,7 +47,7 @@ Partial Class Settings
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(42, 104)
+        Me.Button2.Location = New System.Drawing.Point(12, 41)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(125, 23)
         Me.Button2.TabIndex = 2
@@ -58,7 +58,7 @@ Partial Class Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(220, 186)
         Me.ControlBox = False
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label1)
@@ -68,6 +68,7 @@ Partial Class Settings
         Me.MinimizeBox = False
         Me.Name = "Settings"
         Me.Text = "Settings"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
